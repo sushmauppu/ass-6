@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function check()
+        {
+            var x;
+            x=parseInt(document.getElementById("a").value);
+            if (x>0)
+            {
+                window.alert("the number" +x+ "is positive");
+            }
+            else
+            {
+                window.alert("the number" +x+ "is negative");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>check whether a number positive or negative</h1>
+    Enter age of person:<input type="number" id="a"><br>
+    <button type="button" onclick="check()">check</button>
+</body>
+</html>
