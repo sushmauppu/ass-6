@@ -1,5 +1,582 @@
+
+<!DOCTYPE html>
 <html>
-<body>
-<h1>Human Computer Interaction</h1>
-</body>
+  <head>
+    <title>TIME TABLE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script>
+      function searchContainers() 
+      {
+        var input, filter, containers, divs, i, j, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        containers = ["web1", "web2", "web3"]; 
+        for (j = 0; j < containers.length; j++) {
+          var container = document.getElementById(containers[j]);
+          divs = container.getElementsByClassName("filterDiv");
+
+          for (i = 0; i < divs.length; i++) {
+            txtValue = divs[i].textContent || divs[i].innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              divs[i].style.display = "block";
+            } else {
+              divs[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @media only screen and (max-width: 600px) 
+      {
+        header {
+          height: auto;
+          flex-direction: column;
+          align-items: center;
+          padding: 10px 0; 
+          width: auto;
+        }
+        .search-bar input[type="text"] 
+        {
+          width: 80%; 
+        }
+      }
+      @media only screen and (max-width: 600px) 
+      {
+        .page.page-1 { 
+          height: 50%;
+          width: auto;
+        }
+        .page.page-1 h1 {
+          text-align: center;
+          margin: 0 auto;    
+        }
+        .page.page-2 {
+          height: 50%;
+          display: flex;
+          flex-wrap: wrap; 
+        }
+        .y1,.y2,.y3 p2{
+          padding-top: 8px;
+        }
+        .card-main-container {
+          flex: 50%; 
+          max-width: 50%;
+        }
+      }
+
+      body {
+        margin: 0%;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+        background-color: #f0f0f0;
+        width: 100%;
+      }
+      p{
+        font-size:20px;
+      }
+
+      .filterDiv {
+        float: left;
+        background-color: lavender;
+        color:black;
+        width: 110px;
+        line-height: 90px;
+        text-align: center;
+        margin: 2px;
+        display: none;
+        border-radius:8px;
+        cursor: default;
+        font-size:18px;
+      }
+      .filterDiv:hover {background-color:lightgreen;}
+
+      .show {
+        display: block;
+      }
+
+      .container {
+        margin-top: 20px;
+        overflow: hidden;
+      }
+
+      .btn {
+        border: none;
+        outline: none;
+        padding: 12px 16px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+        border-radius:8px;
+        font-size:15px;
+      }
+
+      .btn:hover {
+        background-color: #ddd;
+      }
+
+      .btn.active {
+        background-color: #666;
+        font-size:18px;
+        color: white;
+        border-radius:8px;
+      }
+
+      header {
+        background-color: white;
+        height: 80px;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo img {
+        height: 60px;
+        width: auto;
+        margin-right: 10px;
+      }
+
+      .logo span {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .menu-icon {
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .search-bar {
+        display: flex;
+        align-items: center;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px;
+        margin-right: 3%;
+      }
+
+      .search-bar input[type="text"] {
+        border: none;
+        width: 150px;
+        padding: 5px;
+        margin-right: 10px;
+      }
+
+      .search-icon {
+        font-size: 20px;
+        cursor: pointer;
+      }
+      .page {
+        width: 100%;
+        min-height: calc(100vh - 80px);
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+      }
+      .page.page-2,.page.page-4,.page.page-5 h1
+      {
+        font-family: 'Times New Roman', Times, serif;
+        color:white;
+        cursor: default;
+      }
+      .page.page-3 h1{
+        font-family: 'Times New Roman', Times, serif;
+        color:indigo;
+        cursor: default;
+      }
+      .page.page-1 {
+        background-image: url('https://w0.peakpx.com/wallpaper/1024/316/HD-wallpaper-macos-big-sur-abstract-gold-big-sur-apple-macbook-computer-abstract.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      a{
+        text-decoration: none;
+        text-transform: capitalize;
+        color: black;
+      }
+      h1
+      {
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        letter-spacing: 2px;
+      }
+      .page.page-2 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://w0.peakpx.com/wallpaper/1003/266/HD-wallpaper-macos-big-sur-abstract-big-sur-apple-macbook-computer-abstract.jpg');
+      }
+
+      .page.page-3 {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://w0.peakpx.com/wallpaper/516/122/HD-wallpaper-macos-big-sur-2021-big-sur-apple-macbook-computer-abstract.jpg');
+      }
+      .page.page-4,.y3,.y1,.y2{
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('https://w0.peakpx.com/wallpaper/241/16/HD-wallpaper-big-sur-macos-2021-big-sur-apple-macbook-computer-abstract.jpg');
+      }
+      p2{
+        font-size: 30px;
+        font-family: 'Times New Roman', Times, serif;
+        color: #f1f1f1;
+        padding-top: 8px;
+      }
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Poppins', sans-serif;
+      }
+      .card-main-container {
+          display: flex;
+          padding-left: 2%;
+          padding-right: 2%;
+      }
+      .card-main {
+        height: 250px;
+        width: 15rem;
+        border-radius: 2px;
+        position: relative;
+        transform-style: preserve-3d;
+        justify-content: center;
+        transition: all .4s ease;
+        align-items: center;
+        margin: 1rem;
+      }
+
+      .card-main:hover {
+          transform: rotateY(180deg);
+      }
+
+      .front-card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 1rem;
+        backface-visibility: hidden;
+        background-image: linear-gradient(to top right, rgb(228, 4, 4), rgb(166, 0, 212));
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 5px;
+      }
+      .filterDiv CSE
+      {
+        color: black;
+      }
+      .back-card {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 1rem;
+        backface-visibility: hidden;
+        transform: rotateY(180deg);
+        background-color: rgb(239, 15, 15);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .front-card img {
+        margin-bottom: 1.2rem;
+        width: 15%;
+      }
+      .front-card p {
+        margin-top: 1rem;
+        font-size: .9rem;
+        color: white;
+      }
+      h3 {
+        font-family: 'Times New Roman', Times, serif;
+        color: white;
+        font-weight: bold;
+      }
+
+      .btn {
+        margin-top: 1rem;
+      }
+      a{
+        text-decoration: none;
+        text-transform: uppercase;
+        color: black;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      h1{
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 40px;
+      }
+      p5{
+        font-size: 15px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+      }
+      .back-light {
+        color: #fff;
+      }
+      .abc:hover {
+        border: 2px solid black;
+        border-radius: 16px;
+        padding: 5px;
+        background-color: #f1f1f1;
+        color: black;
+        cursor: pointer;
+      }   
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="menu-icon">
+        <i class="fa fa-home" onclick="home()">&nbsp; Home</i>
+        <div class="menu-options">
+        </div>
+      </div>
+      <div class="logo">
+        <img src="https://www.srix.in/images/sru-logo-sm.png" alt="Logo">
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search" id="searchInput" onkeyup="searchContainers()">
+        <div class="search-icon">
+          <i class="fa fa-search"></i>
+        </div>
+    </header>
+    <div id="web">
+      <br><br><br><br>
+      <div class="page page-1">
+        <h1 style="margin-left: auto; margin-right: auto;">DEPARTMENT OF COMPUTER SCIENCE<br> AND ENGINEERING
+         <hr>TIME TABLE
+        </h1>
+      </div>
+      <div class="page page-2">
+        <div class="card-main-container">
+          <div class="card-main">
+            <div class="front-card">
+              <img src="./user.png" alt="">
+              <h1>1st YEAR</h1>
+            </div>
+            <div class="back-card">
+              <h3 onclick="year1()" class="abc">Click Here!<br>for<br> Time Table</h3>
+            </div>
+          </div>  
+        </div>
+        <div class="card-main-container">
+          <div class="card-main">
+            <div class="front-card">
+              <img src="./user.png" alt="">
+              <h1>2ND YEAR</h1>
+            </div>
+            <div class="back-card">
+              <h3 onclick="year2()" class="abc">Click Here!<br>for<br>Time Table</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-main-container">
+          <div class="card-main">
+            <div class="front-card">
+              <img src="./user.png" alt="">
+              <h1>3RD YEAR</h1>
+            </div>
+            <div class="back-card">
+              <h3 onclick="year3()" class="abc">Click Here!<br>for<br>Time Table</h3>
+            </div>
+          </div>
+        </div>
+        <div class="card-main-container">
+          <div class="card-main">
+            <div class="front-card">
+              <img src="./user.png" alt="">
+              <h1>4TH YEAR</h1>
+            </div>  
+            <div class="back-card">
+              <h3 onclick="year4()" class="abc">Click Here!<br>for<br>Time Table</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="web1" style="display: none;" class="y1">
+      <br><br><br><br><br><br>
+      <center><p2>B.TECH 1ST YEAR TIME TABLE</p2></center><br>
+      <br>
+      <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('CSE')"> CSE</button>
+      </div>
+      <div class="container">
+        <div class="filterDiv CSE">CSE-A1</div>
+        <div class="filterDiv CSE">CSE-A2</div>
+        <div class="filterDiv CSE">CSE-B1</div>
+        <div class="filterDiv CSE">CSE-B2</div>
+        <div class="filterDiv CSE">CSE-C1</div>
+        <div class="filterDiv CSE">CSE-C2</div>
+        <div class="filterDiv CSE">CSE-D1</div>
+        <div class="filterDiv CSE">CSE-D2</div>
+        <div class="filterDiv CSE">CSE-E1</div>
+        <div class="filterDiv CSE">CSE-E2</div>
+        <div class="filterDiv CSE">CSE-F1</div>
+        <div class="filterDiv CSE">CSE-F2</div>
+        <div class="filterDiv CSE">CSE-G1</div>
+        <div class="filterDiv CSE">CSE-G2</div>
+        <div class="filterDiv CSE">CSE-H1</div>
+        <div class="filterDiv CSE">CSE-h3</div>
+        <div class="filterDiv CSE">CSE-I1</div>
+        <div class="filterDiv CSE">CSE-I2</div>
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div id="web2" style="display: none;" class="y2">
+      <br><br><br><br><br><br>
+      <center><p2 style="color: white;">B.TECH 2ND YEAR TIME TABLE</p2></center>
+      <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('CSE')"> CSE</button>
+        <button class="btn" onclick="filterSelection('AIML')"> AIML</button>
+        <button class="btn" onclick="filterSelection('CS&DS')"> CS&DS</button>
+      </div>
+      <div class="container">
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-A.html">CSE-A</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-B.html">CSE-B</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-C.html">CSE-C</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-D.html" >CSE-D</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-E.html">CSE-E</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-F.html">CSE-F</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-G.html">CSE-G</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-H.html">CSE-H</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-I.html">CSE-I</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-J.html">CSE-J</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-K.html">CSE-K</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-L.html">CSE-L</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-M.html">CSE-M</a></div>
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-N.html">CSE-N</a></div>  
+        <div class="filterDiv CSE"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2-CSE-O.html">CSE-O</a></div>
+        <div class="filterDiv AIML"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-AIML-A-1.html">CSE AIML-A</a></div>
+        <div class="filterDiv AIML"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-AIML-B.html">CSE AIML-B</a></div>
+        <div class="filterDiv AIML"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-AIML-C.html">CSE AIML-C</a></div>
+        <div class="filterDiv AIML"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2CSE-AIML-D.html">CSE AIML-D</a></div>
+        <div class="filterDiv CS&DS"><a href="http://sru.42web.io/wp-content/uploads/2023/08/2-CSE-DSCS.html">CSE DS&CS</a></div>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+    <div id="web3" style="display: none;" class="y3">
+      <br><br><br><br><br><br>
+      <center><p3 style="font-family: 'Times New Roman', Times, serif; color: white; font-size: 30px;">B.TECH 3RD YEAR TIME TABLE</p3></center>
+      <div id="myBtnContainer">
+        <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+        <button class="btn" onclick="filterSelection('CSE')">CSE</button>
+      </div>
+      <div class="container">
+        <div class="filterDiv CSE" onclick="no()">CSE-A</div>
+        <div class="filterDiv CSE" onclick="no()">CSE-B</div>
+        <div class="filterDiv CSE" onclick="no()">CSE-C</div>
+        <div class="filterDiv CSE" onclick="no()">CSE-D</div>
+        <div class="filterDiv CSE" onclick="no()">CSE-E</div>
+      </div>
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    </div>
+    <div id="no" style="display: none;">
+      <h1 style="margin: 25%; text-align: center;">NO!<br>TIME TABLE<br>AVAILABLE</h1>
+    </div>
+    <script>
+      function year1() {
+          document.getElementById("web").style.display = "none";
+          document.getElementById("web1").style.display = "block";
+          document.getElementById("web2").style.display = "none";
+          document.getElementById("web3").style.display = "none";
+          document.getElementById("no").style.display = "none";
+      }
+      function year2() {
+          document.getElementById("web").style.display = "none";
+          document.getElementById("web1").style.display = "none";
+          document.getElementById("web2").style.display = "block";
+          document.getElementById("web3").style.display = "none";
+          document.getElementById("no").style.display = "none";
+      }
+      function year3() {
+          document.getElementById("web").style.display = "none";
+          document.getElementById("web1").style.display = "none";
+          document.getElementById("web2").style.display = "none";
+          document.getElementById("web3").style.display = "block";
+          document.getElementById("no").style.display = "none";
+      }
+      function home()
+      {
+          document.getElementById("web").style.display = "block";
+          document.getElementById("web1").style.display = "none";
+          document.getElementById("web2").style.display = "none";
+          document.getElementById("web3").style.display = "none";
+          document.getElementById("no").style.display = "none";
+      }
+      function no()
+      {
+          document.getElementById("web").style.display = "none";
+          document.getElementById("web1").style.display = "none";
+          document.getElementById("web2").style.display = "none";
+          document.getElementById("web3").style.display = "none";
+          document.getElementById("no").style.display = "block";
+      }
+      filterSelection("all")
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+      
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+      
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+      
+      // Add active class to the current button (highlight it)
+      var btnContainer = document.getElementById("myBtnContainer");
+      var btns = btnContainer.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+    </script>
+  </body>
 </html>
