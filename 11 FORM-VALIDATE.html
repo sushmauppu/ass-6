@@ -11,27 +11,43 @@
         Username         : <input type="text" id="usr"><br><br>
         Password         : <input type="text" id="pwd"><br><br>
         Confirm Password : <input type="text" id="confirmPassword"><br><br>
+        phone number : <input type="text" id="phnum"><br><br>
+        pincode : <input type="text" id="pin"><br><br>
         <button type="button" onclick="login()">login</button>
     </center>
     <script>
         function login()
         {
-            var user,passwd,confirmPassword;
+            var user,passwd,confirmPassword,phnum,pin,validationResult = "";
             user=document.getElementById("usr").value;
             passwd=document.getElementById("pwd").value;
             confirmPassword=document.getElementById("confirmPassword").value;
-            if(user=="")
+            pin=document.getElementById("pin").value;
+            phnum=document.getElementById("phnum").value;
+            if(user.length<8)
             {
-                window.alert("Please enter username");
+                window.alert("Username should be at least 8 characters");
             }
-            if(passwd=="")
+            if(passwd.length<8)
             {
-                window.alert("Please enter password");
+                window.alert("Password should be at least 8 characters");
             }
-            if (passwd !== confirmPassword)
+            if(passwd!==confirmPassword)
             {
                 window.alert("Passwords do not match");
             }
+            if (phnum.length>10) 
+            {
+                window.alert("Phone number should be at most 10 digits");
+            }
+            if(pin.length>10)
+            {
+                window.alert("Pin code should be at most 6 digits");
+            }
+            if (validationResult === "") 
+            {
+                window.location.href = "https://sushmauppu.github.io/ass-6/index.html";
+            } 
             else
             {
                 window.alert("Form is valid. Submission successful");
